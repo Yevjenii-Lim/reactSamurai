@@ -11,6 +11,9 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
+  "plugins": [
+    "react-html-attrs"
+  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-react-html-attrs": "^3.0.5"
   }
 }

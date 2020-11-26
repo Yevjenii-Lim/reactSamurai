@@ -1,0 +1,8 @@
+.aside {
+  margin-top: 5em;
+  grid-area: aside;
+}
+.aside__img {
+  width: 150px;
+  height: 150px;
+}
