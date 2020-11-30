@@ -1,8 +1,8 @@
 import React from "react";
-import './Header.css'
+import s from './Header.module.css'
 function Header() {
   return (
-    <header className="header">
+    <header className={s.header}>
       <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Img_logo_blue.jpg"></img>
     </header>
   );

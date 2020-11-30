@@ -1,13 +1,13 @@
 import React from "react";
-import Svg from "../Svg";
-import './Aside.css'
+import Svg from "./Svg";
+import s from './Aside.module.css';
 
 function Aside() {
   return (
     <aside>
-      <div className="aside">
+      <div className={s.aside}>
       <Svg></Svg>
-        <p className="aside__text">Lear more</p>
+        <p className={s.aside__text}>Lear more</p>
         <button>Sign up</button>
       </div>
       <div>
