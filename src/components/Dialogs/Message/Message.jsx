@@ -1,16 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import s from './../Dialogs.module.css';
-
-
+import { NavLink, Route } from "react-router-dom";
+import s from "./../Dialogs.module.css";
 
 const Message = (props) => {
-
+  
   return (
-  <div className={s.message}>{props.message}</div>
-  )
-}
-
-
+    <Route path={"/dialogs/" + props.id}>
+      <div className={s.message}>
+        <img src={props.avatar}></img>
+        <p>{props.message}</p>
+      </div>
+   
+    </Route>
+  );
+};
 
 export default Message;

@@ -10,7 +10,7 @@ function Profile(props) {
   return (
     <article>
     <ProfileInfo></ProfileInfo>
-  <MyPosts postsData={props.posts}></MyPosts>
+    <MyPosts updateNewPost={props.updateNewPost} addPost={props.addPost} newPost={props.newPost} postsData={props.posts}></MyPosts>
     
   </article>
   );

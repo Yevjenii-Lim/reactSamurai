@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from './redux/state'
-import {addPost} from './redux/state'
-import {render} from './render'
+
+import {addPost, updateNewPost} from './redux/state'
 
 
-  // ReactDOM.render(
-  //   <React.StrictMode>
-  //     <App state={state} addPost={addPost}/>
-  //   </React.StrictMode>,
-  //   document.getElementById('root')
-  // );
-render(state)
+export let render = (state) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App state={state} addPost={addPost} updateNewPost={updateNewPost}/>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
 
 
 

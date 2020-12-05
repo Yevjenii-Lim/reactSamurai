@@ -7,7 +7,7 @@ import s from './Dialog.module.css';
 const DialogItem = (props) => {
   let path = "/dialogs/" + props.id
   return (
-  <li className={s.dialog}> <NavLink to={path}>{props.name}</NavLink></li>
+  <li className={s.dialog}> <NavLink to={path}> <img src={props.avatar} className={s.dialogAvatar} alt=""/> {props.name}</NavLink></li>
   )
 }
 

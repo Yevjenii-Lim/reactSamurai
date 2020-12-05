@@ -7,3 +7,14 @@
 .message {
   color: white;
 }
+.dialog {
+  margin: 2em;
+}
+.dialog a{
+  display: flex;
+  align-items: center;
+}
+.dialogAvatar {
+  width: 50px;
+  border-radius: 50%;
+}

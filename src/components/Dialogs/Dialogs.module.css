@@ -1,9 +1,53 @@
 .wrap {
   display: grid;
   grid-template-columns: 3fr 9fr;
+  grid-template-rows: 1fr 0.1fr;
   align-items: center;
-
+ 
+}
+.dialogs ul {
+  list-style: none;
+}
+.messages {
+  background-color: blue;
+  height: 100%;
 }
 .message {
   color: white;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  width: 50%;
+  
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.message p {
+  margin: 0 auto;
+}
+.message img {
+  width: 50px;
+  border-radius: 50%;
+  margin-left: auto;
+}
+.message:nth-child(odd) {
+  margin-right: auto;
+}
+.message:nth-child(odd) img {
+  order: 2; 
+}
+
+.formSend {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.formSend .input {
+  height: 50px;
+
+
 }

@@ -1,0 +1,15 @@
+.wrap {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 2em;
+}
+.friend__item img {
+    width: 40px;
+    border-radius: 50%;
+}
+.friend__item {
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+}

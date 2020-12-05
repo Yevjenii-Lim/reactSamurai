@@ -12,16 +12,14 @@ import About from "./components/About/About";
 
 const App = (props) => {
 
- 
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header></Header>
-        <Nav></Nav>
-
+        <Nav friends={props.state.friendsPage}></Nav>
         <div className="app-wrapper__content">
-          <Route path='/profile' render={() => <Profile posts={props.posts}></Profile>}></Route>
-          <Route path='/dialogs' render={() => <Dialogs messages={props.messages} dialogs={props.dialogs}></Dialogs>}></Route>
+          <Route path='/profile'> <Profile updateNewPost={props.updateNewPost} addPost={props.addPost} newPost={props.state.profilePage.newPostText} posts={props.state.profilePage.postsData}></Profile></Route>
+          <Route path='/dialogs' render={() => <Dialogs messages={props.state.messagesPage.messagesData} dialogs={props.state.messagesPage.dialogData}></Dialogs>}></Route>
           <Route path='/news' render={() => <News></News>}></Route>
           <Route path='/photo' render={() => <Photo></Photo>}></Route>
           <Route path='/about' render={() => <About></About>}></Route>
