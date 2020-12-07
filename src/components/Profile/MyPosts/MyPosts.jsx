@@ -3,7 +3,7 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
-
+ 
   let postElemtnts = props.postsData.map((p, index) => (
     <Post message={p.message} key={index} like={p.like}></Post>
   ));
@@ -18,6 +18,7 @@ function MyPosts(props) {
     props.updateNewPost(text)
    
   }
+
   return (
     <div className={s.add_post}>
       <div>
