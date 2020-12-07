@@ -9,7 +9,7 @@ function Profile(props) {
 
   return (
     <article>
-    <ProfileInfo></ProfileInfo>
+    <ProfileInfo profile={props.profile}></ProfileInfo>
     <MyPosts updateNewPost={props.updateNewPost} addPost={props.addPost} newPost={props.newPost} postsData={props.posts}></MyPosts>
     
   </article>

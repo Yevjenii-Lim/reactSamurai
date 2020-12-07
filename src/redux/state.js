@@ -35,6 +35,10 @@ import {render} from './../render'
         {id: 2, message: 'How you doing', like: 1},
         ],
         newPostText: 'new Post',
+        profileData: {
+            srcBg: "https://www.adobe.com/content/dam/cc/us/en/creative-cloud/photography/discover/nature-photography/desktop/nature_P2a_720x350.jpg.img.jpg",
+            avatar: "https://html5css.ru/w3css/img_avatar3.png",
+        }
       },
       messagesPage: {
            dialogData:  [
@@ -68,6 +72,7 @@ import {render} from './../render'
             message: state.profilePage.newPostText,
             like: 0,
         };
+        state.profilePage.newPostText = '';
         state.profilePage.postsData.push(newPost)
         render(state)
     }

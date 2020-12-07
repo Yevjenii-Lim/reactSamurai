@@ -11,7 +11,7 @@ function MyPosts(props) {
   let addPost = () => {
     let text = newPost.current.value;
     props.addPost(text);
-    props.updateNewPost(" ")
+    
   };
   let changer = () => {
     let text = newPost.current.value;
