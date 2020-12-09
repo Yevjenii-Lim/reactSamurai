@@ -89,31 +89,33 @@ let store = {
       ],
     },
   },
-  getState() {
-    return this._state
-  },
   _render() {
     console.log('asa')
   },
+  getState() {
+    return this._state
+  },
+
   subscriber(obs) {
     this._render = obs;
   },
-  addPost() {
-    let newPost = {
-      id: 3,
-      message: this._state.profilePage.newPostText,
-      like: 0,
-    };
-    this._state.profilePage.newPostText = "";
-    this._state.profilePage.postsData.push(newPost);
-    this._render(this._state);
-  
-  },
-  updateNewPost(newText) {
-      this._state.profilePage.newPostText = newText;
+
+
+  dispatch(action) {
+    if(action.type == "ADD-POST") {
+      let newPost = {
+        id: 3,
+        message: this._state.profilePage.newPostText,
+        like: 0,
+      };
+      this._state.profilePage.newPostText = "";
+      this._state.profilePage.postsData.push(newPost);
       this._render(this._state);
-    },
-  
+    }else if (action.type == "UPDATE-NEW-POST") {
+      this._state.profilePage.newPostText = action.newText;
+      this._render(this._state);
+    }
+  }
  
 }
 

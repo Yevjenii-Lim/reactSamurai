@@ -3,19 +3,19 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
- 
+
   let postElemtnts = props.postsData.map((p, index) => (
     <Post message={p.message} key={index} like={p.like}></Post>
   ));
   let newPost = React.createRef();
   let addPost = () => {
     let text = newPost.current.value;
-    props.addPost(text);
+    props.dispatch({type: "ADD-POST"});
     
   };
   let changer = () => {
     let text = newPost.current.value;
-    props.updateNewPost(text)
+    props.dispatch({type: "UPDATE-NEW-POST", newText: text})
    
   }
 
