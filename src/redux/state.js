@@ -102,7 +102,7 @@ let store = {
 
 
   dispatch(action) {
-    if(action.type == "ADD-POST") {
+    if(action.type == ADD_POST) {
       let newPost = {
         id: 3,
         message: this._state.profilePage.newPostText,
@@ -111,12 +111,18 @@ let store = {
       this._state.profilePage.newPostText = "";
       this._state.profilePage.postsData.push(newPost);
       this._render(this._state);
-    }else if (action.type == "UPDATE-NEW-POST") {
+    }else if (action.type == UPDATE_NEW_POST) {
       this._state.profilePage.newPostText = action.newText;
       this._render(this._state);
     }
   }
  
 }
+const ADD_POST = "ADD_POST"
+export let addPostActionCreator = () => ({ type: ADD_POST,})
+
+
+const UPDATE_NEW_POST = "UPDATE_NEW_POST"
+export let newPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST, newText: text })
 
 export default store;
