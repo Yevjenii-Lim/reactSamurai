@@ -3,6 +3,8 @@
 // .then(responce => responce.json())
 // .then(json => console.log(json))
 
+import { act } from "react-dom/test-utils";
+
 
 let store = {
   _state: {
@@ -48,29 +50,30 @@ let store = {
       messagesData: [
         {
           id: 1,
-          message: "hi",
+          message: ["hi", 'how'],
           avatar:
             "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
         },
         {
           id: 2,
-          message: "Whats up",
+          message: ["Whats up"],
           avatar:
             "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
         },
         {
           id: 3,
-          message: "With it",
+          message: ["With it"],
           avatar:
             "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
         },
         {
           id: 4,
-          message: "Vanila face",
+          message: ["Vanila face"],
           avatar:
             "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
         },
       ],
+      newMessageText: '',
     },
     friendsPage: {
       friend: [
@@ -102,7 +105,7 @@ let store = {
 
 
   dispatch(action) {
-    if(action.type == ADD_POST) {
+    if(action.type === ADD_POST) {
       let newPost = {
         id: 3,
         message: this._state.profilePage.newPostText,
@@ -111,8 +114,21 @@ let store = {
       this._state.profilePage.newPostText = "";
       this._state.profilePage.postsData.push(newPost);
       this._render(this._state);
-    }else if (action.type == UPDATE_NEW_POST) {
+    }else if (action.type === UPDATE_NEW_POST) {
       this._state.profilePage.newPostText = action.newText;
+      this._render(this._state);
+    }else if (action.type === SEND_MESSAGE) {
+      console.log(action.newMessage)
+      let body = this._state.messagesPage.newMessage
+      this._state.messagesPage.newMessage = "";
+      this._state.messagesPage.messagesData.forEach(dialog => {
+        if(dialog.id === action.id) {
+          dialog.message.push(body)
+        }
+      })
+      this._render(this._state);
+    }else if(action.type === NEW_MESSAGE) {
+      this._state.messagesPage.newMessage = action.text
       this._render(this._state);
     }
   }
@@ -124,5 +140,9 @@ export let addPostActionCreator = () => ({ type: ADD_POST,})
 
 const UPDATE_NEW_POST = "UPDATE_NEW_POST"
 export let newPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST, newText: text })
-
+const SEND_MESSAGE = 'SEND_MESSAGE'
+export const sendMessageActionCreator = (text,id) => ({type: SEND_MESSAGE, newMessage: text, id: id})
+export const changeMessageActionCreator = (text,id) => ({type: NEW_MESSAGE, text: text, id: id})
 export default store;
+
+const NEW_MESSAGE = 'NEW_MESSAGE'
