@@ -1,7 +1,63 @@
 const NEW_MESSAGE = 'NEW_MESSAGE'
 const SEND_MESSAGE = 'SEND_MESSAGE'
 
-const messagesReducer = (state, action) => {
+let initialState = {
+        dialogData: [
+          {
+            id: 1,
+            name: "dmitry",
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+          {
+            id: 2,
+            name: "Valera",
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+          {
+            id: 3,
+            name: "Natasha",
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+          {
+            id: 4,
+            name: "Zheny",
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+        ],
+        messagesData: [
+          {
+            id: 1,
+            message: ["hi", 'how'],
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+          {
+            id: 2,
+            message: ["Whats up"],
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+          {
+            id: 3,
+            message: ["With it"],
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+          {
+            id: 4,
+            message: ["Vanila face"],
+            avatar:
+              "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
+          },
+        ],
+        newMessageText: '',
+}
+
+const messagesReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case SEND_MESSAGE: 

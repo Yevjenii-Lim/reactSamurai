@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import s from "./../Dialogs.module.css";
-import MessageItem from "./MessageItem";
+// import MessageItem from "./MessageItem";
 
 const Message = (props) => {
 
