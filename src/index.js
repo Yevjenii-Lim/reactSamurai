@@ -6,18 +6,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-let rerenderTree = (state) => {
+let rerenderTree = () => {
 
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)}/>
+      <App store={store}/>
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
-rerenderTree(store.getState())
+rerenderTree(store)
 store.subscribe(() => {
-  rerenderTree(store.getState())
+  rerenderTree(store)
 })
 
 

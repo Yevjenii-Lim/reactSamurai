@@ -1,22 +1,23 @@
 import React from "react";
-import { addPostActionCreator, newPostTextActionCreator } from "../../../redux/profile-reduce";
+// import { addPostActionCreator, newPostTextActionCreator } from "../../../redux/profile-reduce";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
-
-  let postElemtnts = props.state.postsData.map((p, index) => (
+  // debugger
+  let postElemtnts = props.posts.map((p, index) => (
     <Post message={p.message} key={index} like={p.like}></Post>
   ));
   let newPost = React.createRef();
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    props.addPost()
+    // props.dispatch(addPostActionCreator());
     
   };
   let changer = () => {
-    let text = newPost.current.value;
-    props.dispatch(newPostTextActionCreator(text))
+    let text = newPost.current.value
+    props.updateNewPostText(text)
    
   }
 
@@ -24,7 +25,7 @@ function MyPosts(props) {
     <div className={s.add_post}>
       <div>
         <input
-          value={props.newPost}
+          value={props.newPostText}
           onChange={changer}
           ref={newPost}
           className={s.add_post__input}

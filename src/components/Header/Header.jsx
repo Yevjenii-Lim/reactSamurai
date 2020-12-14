@@ -1,9 +1,13 @@
 import React from "react";
 import s from './Header.module.css'
-function Header() {
+
+function Header(props) {
+  // debugger
+  let state = props.logo.getState()
+
   return (
     <header className={s.header}>
-      <img alt="background" src="https://upload.wikimedia.org/wikipedia/commons/d/df/Img_logo_blue.jpg"></img>
+      <img alt="background" src={state.header.logo}></img>
     </header>
   );
 }
