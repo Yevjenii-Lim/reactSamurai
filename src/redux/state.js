@@ -4,6 +4,9 @@
 // .then(json => console.log(json))
 
 import { act } from "react-dom/test-utils";
+import frienndsReducer from "./friends-reducer";
+import messagesReducer from "./messages-reduce";
+import profileReducer from "./profile-reduce";
 
 
 let store = {
@@ -105,44 +108,18 @@ let store = {
 
 
   dispatch(action) {
-    if(action.type === ADD_POST) {
-      let newPost = {
-        id: 3,
-        message: this._state.profilePage.newPostText,
-        like: 0,
-      };
-      this._state.profilePage.newPostText = "";
-      this._state.profilePage.postsData.push(newPost);
-      this._render(this._state);
-    }else if (action.type === UPDATE_NEW_POST) {
-      this._state.profilePage.newPostText = action.newText;
-      this._render(this._state);
-    }else if (action.type === SEND_MESSAGE) {
-      console.log(action.newMessage)
-      let body = this._state.messagesPage.newMessage
-      this._state.messagesPage.newMessage = "";
-      this._state.messagesPage.messagesData.forEach(dialog => {
-        if(dialog.id === action.id) {
-          dialog.message.push(body)
-        }
-      })
-      this._render(this._state);
-    }else if(action.type === NEW_MESSAGE) {
-      this._state.messagesPage.newMessage = action.text
-      this._render(this._state);
-    }
+
+    this._state.profilePage =  profileReducer(this._state.profilePage, action)
+    this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+    this._state.friendsPage = frienndsReducer(this._state.friendsPage, action)
+
+    this._render(this._state)
+  
   }
  
 }
-const ADD_POST = "ADD_POST"
-export let addPostActionCreator = () => ({ type: ADD_POST,})
 
 
-const UPDATE_NEW_POST = "UPDATE_NEW_POST"
-export let newPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST, newText: text })
-const SEND_MESSAGE = 'SEND_MESSAGE'
-export const sendMessageActionCreator = (text,id) => ({type: SEND_MESSAGE, newMessage: text, id: id})
-export const changeMessageActionCreator = (text,id) => ({type: NEW_MESSAGE, text: text, id: id})
+
 export default store;
 
-const NEW_MESSAGE = 'NEW_MESSAGE'
