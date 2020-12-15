@@ -6,9 +6,9 @@ function ProfileInfo(props) {
   
   return (
     <div className={s.content}>
-    <img alt="background" src={props.profile.srcBg}></img>
+    {/* <img alt="background" src={props.profile.srcBg}></img> */}
     <div className={s.person}>
-      <img className={s.person__image} alt="avatar" src={props.profile.avatar}></img>
+      {/* <img className={s.person__image} alt="avatar" src={props.profile.avatar}></img> */}
       <div className={s.person__info}>
         <ul>
           <li className={s.item}>Age</li>  

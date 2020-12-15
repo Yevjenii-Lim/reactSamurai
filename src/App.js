@@ -16,11 +16,11 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header logo={props.store}></Header>
+        {/* <Header logo={props.store}></Header> */}
         <Nav friends={props.store}></Nav>
         <div className="app-wrapper__content">
-          <Route path='/profile'> <Profile store={props.store}></Profile></Route>
-          <Route path='/dialogs' render={() => <DialogsContainer store={props.store}></DialogsContainer>}></Route>
+          <Route path='/profile'> <Profile></Profile></Route>
+          <Route path='/dialogs' render={() => <DialogsContainer ></DialogsContainer>}></Route>
           <Route path='/news' render={() => <News></News>}></Route>
           <Route path='/photo' render={() => <Photo></Photo>}></Route>
           <Route path='/about' render={() => <About></About>}></Route>
@@ -31,5 +31,6 @@ const App = (props) => {
     </BrowserRouter>
   );
 };
-
+// store={props.store}
+// store={props.store}
 export default App;
