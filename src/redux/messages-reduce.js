@@ -54,24 +54,47 @@ let initialState = {
               "https://i.etsystatic.com/9193132/r/il/116813/2029155707/il_794xN.2029155707_7hxm.jpg",
           },
         ],
-        newMessageText: '',
+        newMessageText: ' ',
 }
 
 const messagesReducer = (state = initialState, action) => {
 
     switch(action.type) {
-        case SEND_MESSAGE: 
-            let body = state.newMessageText
-            state.newMessageText = "";
+        case SEND_MESSAGE: {
+       
+          if(state.newMessageText.length > 1) {
+            let body = state.newMessageText;
+            // stateCopy.messagesData = [...state.messagesData]
+         
+            // for(let i = 0; i < state.messagesData.length; i++) {
+            //   stateCopy.messagesData[i] = {...state.messagesData[i]}
+       
+            // }
+            // console.log(state.messagesData === initialState.messagesData)
             state.messagesData.forEach(dialog => {
             if(dialog.id === action.id) {
                 dialog.message.push(body)
             }
+          
             });
-            return state;
+        
+            return {...state,
+              messagesData: [...state.messagesData,],
+              newMessageText: "",
+            }
+          }else {
+            return state
+          }
+        }
+           
         case NEW_MESSAGE: 
-            state.newMessageText = action.text;
-            return state;
+   
+          return {
+            ...state,
+            newMessageText: action.text,
+          }
+       
+        
         default: return state;
     }
 }

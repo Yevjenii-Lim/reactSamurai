@@ -1,10 +1,8 @@
-
 import "./App.css";
 import Profile from "./components/Profile/Profile.jsx";
-import Header from "./components/Header/Header.jsx";
+import HeaderContainer from "./components/Header/Header.jsx";
 import Nav from "./components/Navbar/Nav.jsx";
 import Aside from "./components/Aside/Aside.jsx";
-// import Dialogs from "./components/Dialogs/Dialogs";
 import News from './components/News/News'
 import { BrowserRouter, Route } from "react-router-dom";
 import Photo from "./components/Photo/Photo";
@@ -16,7 +14,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        {/* <Header logo={props.store}></Header> */}
+        <HeaderContainer logo={props.store}></HeaderContainer>
         <Nav friends={props.store}></Nav>
         <div className="app-wrapper__content">
           <Route path='/profile'> <Profile></Profile></Route>

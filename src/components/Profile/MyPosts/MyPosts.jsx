@@ -4,14 +4,12 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
+  // debugger
   let postElemtnts = props.posts.map((p, index) => (
     <Post message={p.message} key={index} like={p.like}></Post>
   ));
   let newPost = React.createRef();
 
-  let addPost = () => {
-    props.addPost()    
-  };
   let changer = () => {
     let text = newPost.current.value
     props.updateNewPostText(text)
@@ -30,7 +28,7 @@ function MyPosts(props) {
         ></input>
       </div>
       <div>
-        <button onClick={addPost} className={s.add_post__button}>
+        <button onClick={ props.addPost} className={s.add_post__button}>
           Add
         </button>
       </div>

@@ -17,7 +17,7 @@ function Nav(props) {
           <li><NavLink className={clasess.item} activeClassName={clasess.active} to="/photo">Photo</NavLink></li>
           <li><NavLink className={clasess.item} activeClassName={clasess.active} to="/about">About</NavLink></li>
         </ul>
-        {/* <FriendsList friends={state.friend}></FriendsList> */}
+        <FriendsList ></FriendsList>
       </nav>
   );
 }

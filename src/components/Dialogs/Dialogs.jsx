@@ -8,7 +8,6 @@ import Message from './Message/Message'
 
 
 function Dialogs(props) {
-// debugger
 
   let newDialogData = props.dialogData.map(d => {
     return (<DialogItem name={d.name} key={d.id} id ={d.id} avatar={d.avatar}></DialogItem>)

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import Friend from "./Friend";
 import s from "./FriendsList.module.css";
 
@@ -15,4 +16,12 @@ const FriendsList = (props) => {
   );
 };
 
-export default FriendsList;
+let mapStateToProps = (state) => {
+  return {
+    friends: state.friendsPage.friend,
+  }
+}
+
+let FriendsListContainer = connect(mapStateToProps)(FriendsList)
+
+export default FriendsListContainer;
