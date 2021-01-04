@@ -8,6 +8,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Photo from "./components/Photo/Photo";
 import About from "./components/About/About";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+import Clock from "./components/Clock/Clock";
 
 const App = (props) => {
   
@@ -17,11 +19,13 @@ const App = (props) => {
         <HeaderContainer logo={props.store}></HeaderContainer>
         <Nav friends={props.store}></Nav>
         <div className="app-wrapper__content">
+          <Route path='/clock'> <Clock></Clock></Route>
           <Route path='/profile'> <Profile></Profile></Route>
           <Route path='/dialogs' render={() => <DialogsContainer ></DialogsContainer>}></Route>
           <Route path='/news' render={() => <News></News>}></Route>
           <Route path='/photo' render={() => <Photo></Photo>}></Route>
           <Route path='/about' render={() => <About></About>}></Route>
+          <Route path='/users' render={() => <UsersContainer></UsersContainer>}></Route>
         </div>
 
         <Aside></Aside>

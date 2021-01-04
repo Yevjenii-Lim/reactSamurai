@@ -13,7 +13,7 @@ function Aside() {
       <div>
         <h2>Top News</h2>
         <ul>
-          <li>News</li>
+          <li></li>
           <li>News</li>
           <li>News</li>
           <li>News</li>

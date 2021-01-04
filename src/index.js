@@ -13,6 +13,7 @@ import {Provider} from "react-redux";
          <App  />
       </Provider>
     </React.StrictMode>,
+    
     document.getElementById("root")
   );
 
