@@ -1,17 +1,17 @@
-import { act } from "react-dom/test-utils";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS"
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 const SET_TOTALL_USERS = "SET_TOTALL_USERS"
-
+const TOGGLE_ISFETCHING = "TOGGLE_ISFETCHING"
 
 let initialState = {
   users: [],
   pageSize: 5,
   totalUsersCount: 0,
-  currentPage: 2,
+  currentPage: 1,
+  isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -63,10 +63,16 @@ const usersReducer = (state = initialState, action) => {
       }
     }
     case SET_TOTALL_USERS: {
-      console.log(action.num)
       return {
         ...state,
         totalUsersCount: action.num
+      }
+    }
+    case TOGGLE_ISFETCHING: {
+      // console.log(action.isFetching)
+      return {
+        ...state,
+        isFetching: action.isFetching
       }
     }
     default:
@@ -81,5 +87,6 @@ export let unfollowAC = (userId) => ({type: UNFOLLOW, userId: userId});
 export let setUsersAC = (users) => ({type: SET_USERS, users: users})
 export let setPageAC = (page) => ({type: SET_CURRENT_PAGE, page: page})
 export let setTotalUsersCountAC = (num) => ({type: SET_TOTALL_USERS, num})
+export let toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_ISFETCHING, isFetching})
 
 export default usersReducer;
