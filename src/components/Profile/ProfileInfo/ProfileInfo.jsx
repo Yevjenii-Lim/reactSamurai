@@ -1,7 +1,7 @@
 import React from "react";
 import Preloader from "../../common/Preloader";
 import s from './ProfileInfo.module.css'
-
+import userPhoto from '../../../assets/images/avatar.png';
 
 function ProfileInfo(props) {
   if(!props.profile) {
@@ -13,7 +13,7 @@ function ProfileInfo(props) {
     <div className={s.content}>
     <img alt="background" src={props.profile.srcBg}></img>
     <div className={s.person}>
-      <img className={s.person__image} alt="avatar" src={props.profile.photos.large}></img>
+      <img className={s.person__image} alt="avatar" src={props.profile.photos.large || userPhoto}></img>
       <div className={s.person__info}>
         <p>{props.profile.fullName}</p>
         <ul>

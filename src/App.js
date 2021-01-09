@@ -20,7 +20,7 @@ const App = (props) => {
         <Nav friends={props.store}></Nav>
         <div className="app-wrapper__content">
           <Route path='/clock'> <Clock></Clock></Route>
-          <Route path='/profile/:userId'> <Profile></Profile></Route>
+          <Route path='/profile/:userId?'> <Profile></Profile></Route>
           <Route path='/dialogs' render={() => <DialogsContainer ></DialogsContainer>}></Route>
           <Route path='/news' render={() => <News></News>}></Route>
           <Route path='/photo' render={() => <Photo></Photo>}></Route>

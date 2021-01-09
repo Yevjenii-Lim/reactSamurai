@@ -8,7 +8,11 @@ let initialState = {
           { id: 2, message: "How you doing", like: 1 },
         ],
         newPostText: "new Post",
-        profileData: null
+        profileData: {
+          srcBg:
+            "https://www.adobe.com/content/dam/cc/us/en/creative-cloud/photography/discover/nature-photography/desktop/nature_P2a_720x350.jpg.img.jpg",
+          photos: {large:"https://html5css.ru/w3css/img_avatar3.png",}
+        }
 
 }
 
