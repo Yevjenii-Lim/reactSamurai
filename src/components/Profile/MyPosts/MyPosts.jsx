@@ -12,7 +12,7 @@ function MyPosts(props) {
 
   let changer = () => {
     let text = newPost.current.value
-    props.updateNewPostText(text)
+    props.newPostTextActionCreator(text)
    
   }
 
@@ -28,7 +28,7 @@ function MyPosts(props) {
         ></input>
       </div>
       <div>
-        <button onClick={ props.addPost} className={s.add_post__button}>
+        <button onClick={ props.addPostActionCreator} className={s.add_post__button}>
           Add
         </button>
       </div>

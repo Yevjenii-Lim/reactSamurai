@@ -1,5 +1,6 @@
 const UPDATE_NEW_POST = "UPDATE_NEW_POST"
 const ADD_POST = "ADD_POST"
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 let initialState = {
         postsData: [
@@ -7,13 +8,15 @@ let initialState = {
           { id: 2, message: "How you doing", like: 1 },
         ],
         newPostText: "new Post",
-        profileData: {
-          srcBg:
-            "https://www.adobe.com/content/dam/cc/us/en/creative-cloud/photography/discover/nature-photography/desktop/nature_P2a_720x350.jpg.img.jpg",
-          avatar: "https://html5css.ru/w3css/img_avatar3.png",
-        },
+        profileData: null
 
 }
+
+// {
+  // srcBg:
+    // "https://www.adobe.com/content/dam/cc/us/en/creative-cloud/photography/discover/nature-photography/desktop/nature_P2a_720x350.jpg.img.jpg",
+  // photos: {large:"https://html5css.ru/w3css/img_avatar3.png",}
+// }
 
 const profileReducer = (state = initialState, action) => {
 
@@ -37,12 +40,22 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             newPostText: action.newText
           }
+
+        case SET_USER_PROFILE: {
+          return {
+            ...state,
+            // profileData: [...action.posts],
+            profileData: {...action.user}
+          }
+        }
         default: return state
     }
 }
+
 
 export let addPostActionCreator = () => ({ type: ADD_POST,})
 
 export let newPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST, newText: text })
 
+export let setUserProfile = (user) => ({type: SET_USER_PROFILE, user})
 export default profileReducer;

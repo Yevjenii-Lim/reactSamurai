@@ -1,5 +1,5 @@
 import "./App.css";
-import Profile from "./components/Profile/Profile.jsx";
+import Profile from "./components/Profile/ProfileContainer.jsx";
 import HeaderContainer from "./components/Header/Header.jsx";
 import Nav from "./components/Navbar/Nav.jsx";
 import Aside from "./components/Aside/Aside.jsx";
@@ -20,7 +20,7 @@ const App = (props) => {
         <Nav friends={props.store}></Nav>
         <div className="app-wrapper__content">
           <Route path='/clock'> <Clock></Clock></Route>
-          <Route path='/profile'> <Profile></Profile></Route>
+          <Route path='/profile/:userId'> <Profile></Profile></Route>
           <Route path='/dialogs' render={() => <DialogsContainer ></DialogsContainer>}></Route>
           <Route path='/news' render={() => <News></News>}></Route>
           <Route path='/photo' render={() => <Photo></Photo>}></Route>
