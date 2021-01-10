@@ -1,5 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
+
+import { NavLink } from "react-router-dom";
 // import header from "../../redux/header-reducer";
 import s from "./Header.module.css";
 
@@ -14,20 +15,15 @@ import s from "./Header.module.css";
 //   );
 // }
 function Header(props) {
+
   return (
     <header className={s.header}>
       <img alt="background" src={props.logo}></img>
+      <div className={s.login}>
+        <NavLink to={'/login'}>{props.isAuth ? props.login : 'Login' }</NavLink>
+      </div>
     </header>
   );
 }
 
-let mapStateToProps = (state) => {
-  return {
-    logo: state.header.logo,
-
-  }
-}
-
-let HeaderContainer = connect(mapStateToProps)(Header);
-
-export default HeaderContainer;
+export default Header

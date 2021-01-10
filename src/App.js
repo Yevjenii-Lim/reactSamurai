@@ -1,6 +1,6 @@
 import "./App.css";
 import Profile from "./components/Profile/ProfileContainer.jsx";
-import HeaderContainer from "./components/Header/Header.jsx";
+import HeaderContainer from "./components/Header/HeaderContainer.jsx";
 import Nav from "./components/Navbar/Nav.jsx";
 import Aside from "./components/Aside/Aside.jsx";
 import News from './components/News/News'
