@@ -15,7 +15,7 @@ import s from "./Header.module.css";
 //   );
 // }
 function Header(props) {
-
+console.log(props.login)
   return (
     <header className={s.header}>
       <img alt="background" src={props.logo}></img>

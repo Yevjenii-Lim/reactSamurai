@@ -5,6 +5,8 @@ import * as axios from "axios";
 import { setAuthUserData } from "../../redux/auth-reducer";
 
 class HeaderClass extends React.Component {
+
+
     componentDidMount() {
         axios.get(
         `https://social-network.samuraijs.com/api/1.0/auth/me`, {
@@ -16,7 +18,7 @@ class HeaderClass extends React.Component {
               let {id, email, login} = Response.data.data
               this.props.setAuthUserData(id, email, login)
           }
-        console.log(Response)
+        // console.log(Response)
       });
     }
 
