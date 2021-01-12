@@ -6,9 +6,6 @@ import {
   setUserProfile,
 } from "../../redux/profile-reduce";
 import MyPosts from "./MyPosts/MyPosts";
-// import MyPosts from "./MyPosts/MyPosts";
-// import MyPostsContainer from "./MyPosts/MyPostsContainer";
-// import s from './Profile.module.css'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import * as axios from 'axios'
 import { withRouter } from "react-router-dom";
@@ -19,17 +16,16 @@ import { setAuthUserData } from "../../redux/auth-reducer";
 class ProfileClass extends React.Component {
   componentDidMount() {
    let userId = this.props.match.params.userId
-  //  debugger
-  console.log(this.props.idAuth)
    if(!userId) {
      userId = this.props.idAuth
    }
-    axios
-    .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-    .then((Response) => {
-      this.props.setUserProfile(Response.data);
-      // console.log(Response.data)
-    });
+   if(userId !== null) {
+     axios
+     .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+     .then((Response) => {
+       this.props.setUserProfile(Response.data);
+     });
+   }
   }
 
   render() {
