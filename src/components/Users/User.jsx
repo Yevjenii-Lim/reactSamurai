@@ -1,10 +1,8 @@
 import React from "react";
 import styless from "./user.module.css";
-import userPhoto from '../../assets/images/avatar.png';
+import userPhoto from "../../assets/images/avatar.png";
 import { NavLink } from "react-router-dom";
-import * as axios from "axios";
-
-
+import { getFollowApi, getUnfollowApi } from "../../redux/api/api";
 
 let User = (props) => {
   // debugger
@@ -12,48 +10,39 @@ let User = (props) => {
     <div key={props.id}>
       <span>
         <div>
-          <NavLink to={'/profile/'+ props.id}>
-          <img src={props.photos.small || userPhoto} className={styless.avatar} alt="avatar" />
+          <NavLink to={"/profile/" + props.id}>
+            <img
+              src={props.photos.small || userPhoto}
+              className={styless.avatar}
+              alt="avatar"
+            />
           </NavLink>
         </div>
         <div>
           {props.followed ? (
-            <button onClick={() =>{ 
-              axios.delete(
-                `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
-                {withCredentials: true,
-                headers: {
-                  "API-KEY": "10c45fba-46b9-4d86-90c8-a324c2f4152b"
-                }
-                }
-              )
-              .then((Response) => {
-                if(Response.data.resultCode === 0) {
-                  props.unfollow(props.id)
-          
-                }
-              });  
-              }}>unfollow</button>
-              
-          ) : (
-            <button onClick={() => {
-              axios.post(
-                `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,{},
-                {withCredentials: true,
-                  headers: {
-                    "API-KEY": "10c45fba-46b9-4d86-90c8-a324c2f4152b"
+            <button
+              onClick={() => {
+                getUnfollowApi(props.id).then((data) => {
+                  if (data.resultCode === 0) {
+                    props.unfollow(props.id);
                   }
-                }
-              )
-              .then((Response) => {
-                if(Response.data.resultCode === 0) {
-                  props.follow(props.id)
-                }
-              });  
-            
-              
-            
-            }}>foloow</button>
+                });
+              }}
+            >
+              unfollow
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                getFollowApi(props.id).then((data) => {
+                  if (data.resultCode === 0) {
+                    props.follow(props.id);
+                  }
+                });
+              }}
+            >
+              foloow
+            </button>
           )}
         </div>
       </span>
