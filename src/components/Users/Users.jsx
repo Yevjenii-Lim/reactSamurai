@@ -3,7 +3,7 @@ import User from "./User";
 import styles from "./user.module.css"
 
 let Users = (props) => {
-
+  // debugger
     let pagesCount = props.totalUsers / props.pageSize;
     let pages = [];
     for(let i = 1; i <= 2 ; i++) {
@@ -28,9 +28,10 @@ let Users = (props) => {
         })}
       </div>
 
-      <button onClick={props.getUsers}>Get users</button>
+      <button  onClick={props.getUsers}>Get users</button>
       {props.users.map((u) => (
         <User
+          followingProgress={props.followingProgress}
           key={u.id}
           id={u.id}
           unfollow={props.unfollow}
@@ -38,6 +39,7 @@ let Users = (props) => {
           followed={u.followed}
           fullname={u.name}
           status={u.status}
+          toggleFollowingProgress={props.toggleFollowingProgress}
           //   location={u.location}
           photos={u.photos}
         ></User>

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { getFollowApi, getUnfollowApi } from "../../redux/api/api";
 
 let User = (props) => {
-  // debugger
+ 
   return (
     <div key={props.id}>
       <span>
@@ -20,24 +20,28 @@ let User = (props) => {
         </div>
         <div>
           {props.followed ? (
-            <button
+            <button disabled={props.followingProgress.some(id => id === props.id)}
               onClick={() => {
+                props.toggleFollowingProgress(true, props.id)
                 getUnfollowApi(props.id).then((data) => {
                   if (data.resultCode === 0) {
                     props.unfollow(props.id);
                   }
+                  props.toggleFollowingProgress(false, props.id)
                 });
               }}
             >
               unfollow
             </button>
           ) : (
-            <button
+            <button disabled={props.followingProgress.some(id => id === props.id)}
               onClick={() => {
+                props.toggleFollowingProgress(true, props.id)
                 getFollowApi(props.id).then((data) => {
                   if (data.resultCode === 0) {
                     props.follow(props.id);
                   }
+                  props.toggleFollowingProgress(false, props.id)
                 });
               }}
             >

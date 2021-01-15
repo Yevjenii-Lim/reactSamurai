@@ -22,3 +22,11 @@ export const getUnfollowApi = (id) => {
 export const getFollowApi = (id) => {
     return instance.post(`follow/${id}`).then(response => response.data)
 }
+
+export const getAuthApi = () => {
+    return instance.get('auth/me').then(response => response.data)
+}
+
+export const getProfileApi = (id) => {
+    return instance.get(`profile/${id}`).then(response => response.data)
+}
