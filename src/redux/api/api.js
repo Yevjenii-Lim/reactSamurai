@@ -11,7 +11,7 @@ let instance = axios.create({
 
 
 export const getUsersApi = (currentPage = 1, pageSize = 5) => {
-  return instance.get(`users?page=${currentPage}count=${pageSize}`).then(response => response.data)
+  return instance.get(`users?page=${currentPage}count=${2}`).then(response => response.data)
 }
 
 
@@ -30,3 +30,5 @@ export const getAuthApi = () => {
 export const getProfileApi = (id) => {
     return instance.get(`profile/${id}`).then(response => response.data)
 }
+
+// export const get

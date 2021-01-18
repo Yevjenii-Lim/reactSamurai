@@ -16,6 +16,9 @@ import s from "./Header.module.css";
 // }
 function Header(props) {
 // console.log(props.login)
+// let arr = [1,1,4,0,1,1,12,32,2]
+// let newArr = arr.filter(id => id !== 1 )
+// console.log(newArr)
   return (
     <header className={s.header}>
       <img alt="background" src={props.logo}></img>

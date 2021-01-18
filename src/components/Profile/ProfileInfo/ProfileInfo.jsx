@@ -5,6 +5,7 @@ import userPhoto from '../../../assets/images/avatar.png';
 
 function ProfileInfo(props) {
   if(!props.profile) {
+    // console.log('asdsad')
     return <Preloader></Preloader>
   }
 

@@ -2,29 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   addPostActionCreator,
+  getProfileThunkCreator,
   newPostTextActionCreator,
-  setUserProfile,
 } from "../../redux/profile-reduce";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import * as axios from 'axios'
+
 import { withRouter } from "react-router-dom";
-import { setAuthUserData } from "../../redux/auth-reducer";
+
 
 
 
 class ProfileClass extends React.Component {
+
   componentDidMount() {
    let userId = this.props.match.params.userId
    if(!userId) {
      userId = this.props.idAuth
    }
    if(userId !== null) {
-     axios
-     .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-     .then((Response) => {
-       this.props.setUserProfile(Response.data);
-     });
+    this.props.getProfileThunkCreator(userId)
    }
   }
 
@@ -50,8 +47,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = {
   addPostActionCreator,
   newPostTextActionCreator,
-  setUserProfile,
-  setAuthUserData
+  getProfileThunkCreator
 };
 
 let WithUrlDataContainerComponent = withRouter(ProfileClass)

@@ -2,10 +2,10 @@ import React from "react";
 import styless from "./user.module.css";
 import userPhoto from "../../assets/images/avatar.png";
 import { NavLink } from "react-router-dom";
-import { getFollowApi, getUnfollowApi } from "../../redux/api/api";
+
 
 let User = (props) => {
- 
+
   return (
     <div key={props.id}>
       <span>
@@ -22,13 +22,14 @@ let User = (props) => {
           {props.followed ? (
             <button disabled={props.followingProgress.some(id => id === props.id)}
               onClick={() => {
-                props.toggleFollowingProgress(true, props.id)
-                getUnfollowApi(props.id).then((data) => {
-                  if (data.resultCode === 0) {
-                    props.unfollow(props.id);
-                  }
-                  props.toggleFollowingProgress(false, props.id)
-                });
+                props.getUnFollowThunkCreator(props.id)
+                // props.toggleFollowingProgress(true, props.id)
+                // getUnfollowApi(props.id).then((data) => {
+                //   if (data.resultCode === 0) {
+                //     props.unfollow(props.id);
+                //   }
+                //   props.toggleFollowingProgress(false, props.id)
+                // });
               }}
             >
               unfollow
@@ -36,13 +37,7 @@ let User = (props) => {
           ) : (
             <button disabled={props.followingProgress.some(id => id === props.id)}
               onClick={() => {
-                props.toggleFollowingProgress(true, props.id)
-                getFollowApi(props.id).then((data) => {
-                  if (data.resultCode === 0) {
-                    props.follow(props.id);
-                  }
-                  props.toggleFollowingProgress(false, props.id)
-                });
+                props.getFollowThunkCreator(props.id)
               }}
             >
               foloow

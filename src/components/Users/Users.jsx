@@ -42,6 +42,8 @@ let Users = (props) => {
           toggleFollowingProgress={props.toggleFollowingProgress}
           //   location={u.location}
           photos={u.photos}
+          getUnFollowThunkCreator={props.getUnFollowThunkCreator}
+          getFollowThunkCreator={props.getFollowThunkCreator}
         ></User>
       ))}
     </div>
