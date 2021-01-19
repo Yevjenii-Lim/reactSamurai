@@ -8,7 +8,8 @@ import {
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
+import WithAuthRedirect from "../HOC/WithAuthRedirect";
 
 
 
@@ -26,6 +27,7 @@ class ProfileClass extends React.Component {
   }
 
   render() {
+    
     return (
       <article>
         <ProfileInfo profile={this.props.profile}></ProfileInfo>
@@ -35,12 +37,22 @@ class ProfileClass extends React.Component {
   }
 }
 
+let AuthRedireactComponent = WithAuthRedirect(ProfileClass)
+
+
+// (props) => {
+//   if(!props.isAuth) return <Redirect to={'/login'}></Redirect>
+//   return <ProfileClass {...props}></ProfileClass>
+// }
+
+
 let mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profileData,
     newPostText: state.profilePage.newPostText,
     posts: state.profilePage.postsData,
-    idAuth: state.auth.id
+    idAuth: state.auth.id,
+
   };
 };
 
@@ -50,7 +62,7 @@ let mapDispatchToProps = {
   getProfileThunkCreator
 };
 
-let WithUrlDataContainerComponent = withRouter(ProfileClass)
+let WithUrlDataContainerComponent = withRouter(AuthRedireactComponent)
 
 let ProfileContainer = connect(
   mapStateToProps,

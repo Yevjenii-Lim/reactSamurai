@@ -10,6 +10,7 @@ import About from "./components/About/About";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import Clock from "./components/Clock/Clock";
+import Login from "./components/Login/Login";
 
 const App = (props) => {
   
@@ -26,6 +27,7 @@ const App = (props) => {
           <Route path='/photo' render={() => <Photo></Photo>}></Route>
           <Route path='/about' render={() => <About></About>}></Route>
           <Route path='/users' render={() => <UsersContainer></UsersContainer>}></Route>
+          <Route path='/login' render={() => <Login></Login>}></Route>
         </div>
 
         <Aside></Aside>

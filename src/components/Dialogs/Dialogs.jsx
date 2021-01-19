@@ -2,13 +2,14 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from './Dialog/Dialog'
 import Message from './Message/Message'
+import { Redirect } from "react-router-dom";
 // import { changeMessageActionCreator, sendMessageActionCreator } from "../../redux/messages-reduce";
 
 
 
 
 function Dialogs(props) {
-
+console.log(props.isAuth)
   let newDialogData = props.dialogData.map(d => {
     return (<DialogItem name={d.name} key={d.id} id ={d.id} avatar={d.avatar}></DialogItem>)
   })
@@ -26,6 +27,8 @@ function Dialogs(props) {
     props.changeMessage(text, 1)
   }
 
+  if(!props.isAuth) return <Redirect to={'/login'}></Redirect>
+  
   return (
     <div className={s.wrap}>
         <div className={s.dialogs}>
