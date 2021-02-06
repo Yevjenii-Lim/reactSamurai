@@ -27,8 +27,24 @@ export const getAuthApi = () => {
     return instance.get('auth/me').then(response => response.data)
 }
 
+
+export const profileAPI = {
+    getProfileApi: (id) => {
+        return instance.get(`profile/${id}`).then(response => response.data)
+    },
+    getStatus: (userId) => {
+        // console.log(userId)
+        return instance.get('/profile/status/' + userId)
+    },
+    updateStatus: (text) => {
+        return instance.put('/profile/status', {status: text})
+    }
+}
+
 export const getProfileApi = (id) => {
-    return instance.get(`profile/${id}`).then(response => response.data)
+    console.log('wrong method')
+    // console.log(id)
+    return profileAPI.getProfileApi(id)
 }
 
 // export const get
