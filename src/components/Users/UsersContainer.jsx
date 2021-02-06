@@ -15,6 +15,7 @@ import Users from "./Users";
 import React from 'react';
 // import s from './user.module.css'
 import Preloader from "../common/Preloader";
+import { compose } from "redux";
 
 
 
@@ -81,9 +82,10 @@ let mapObj = {
   getFollowThunkCreator
 }
 
-let UsersContainer = connect(
+
+
+
+export default compose(connect(
   mapStateToProps,
   mapObj
-)(UsersAPIComponent);
-
-export default UsersContainer;
+))(UsersAPIComponent);

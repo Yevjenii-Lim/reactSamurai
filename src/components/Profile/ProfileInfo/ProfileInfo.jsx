@@ -2,6 +2,7 @@ import React from "react";
 import Preloader from "../../common/Preloader";
 import s from './ProfileInfo.module.css'
 import userPhoto from '../../../assets/images/avatar.png';
+import ProfileStatus from "../ProfileStatus";
 
 function ProfileInfo(props) {
   if(!props.profile) {
@@ -23,6 +24,7 @@ function ProfileInfo(props) {
           <li>Age</li>  
           <li>Age</li>  
         </ul>  
+        <ProfileStatus status={props.status} chengeStatus={props.changeStatus}></ProfileStatus>
       </div> 
     </div>
   </div>

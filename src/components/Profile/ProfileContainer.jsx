@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   addPostActionCreator,
+  changeStatus,
   getProfileThunkCreator,
   newPostTextActionCreator,
 } from "../../redux/profile-reduce";
@@ -10,6 +11,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 import { Redirect, withRouter } from "react-router-dom";
 import WithAuthRedirect from "../HOC/WithAuthRedirect";
+import { compose } from "redux";
 
 
 
@@ -27,10 +29,10 @@ class ProfileClass extends React.Component {
   }
 
   render() {
-    
+
     return (
       <article>
-        <ProfileInfo profile={this.props.profile}></ProfileInfo>
+        <ProfileInfo changeStatus={this.props.changeStatus} profile={this.props.profile} status={this.props.status}></ProfileInfo>
         <MyPosts {...this.props}></MyPosts>
       </article>
     );
@@ -52,14 +54,17 @@ let mapStateToProps = (state) => {
     newPostText: state.profilePage.newPostText,
     posts: state.profilePage.postsData,
     idAuth: state.auth.id,
-
+    status: state.profilePage.status
   };
 };
+
+
 
 let mapDispatchToProps = {
   addPostActionCreator,
   newPostTextActionCreator,
-  getProfileThunkCreator
+  getProfileThunkCreator,
+  changeStatus
 };
 
 let WithUrlDataContainerComponent = withRouter(AuthRedireactComponent)
@@ -70,6 +75,7 @@ let ProfileContainer = connect(
 )(WithUrlDataContainerComponent);
 
 
-// profile={state.profileData}
-// dispatch={props.store.dispatch} postsData={state.postsData} newPostText={state.newPostText}
-export default ProfileContainer;
+export default compose( connect(
+  mapStateToProps,
+  mapDispatchToProps
+),withRouter,WithAuthRedirect)(ProfileClass);

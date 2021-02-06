@@ -6,6 +6,7 @@ import {changeMessageActionCreator,sendMessageActionCreator,} from "../../redux/
 
 import { connect } from "react-redux";
 import WithAuthRedirect from "../HOC/WithAuthRedirect";
+import { compose } from "redux";
 
 
 // let mapStateToPropsForRedirect = (state) => {
@@ -33,17 +34,8 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-let AuthRedireactComponent = WithAuthRedirect(Dialogs)
-
-// AuthRedireactComponent = connect(mapStateToPropsForRedirect)(AuthRedireactComponent)
-
-// (props) => {
-//   if(!props.isAuth) return <Redirect to={'/login'}></Redirect>
-//   return <Dialogs {...props}></Dialogs>
-// }
 
 
-let DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedireactComponent)
-//  <Dialogs dialogData={state.dialogData} newMessageText={state.newMessageText} messagesData={state.messagesData} sendMessage={sendMessage} changeMessage={changeMessage}></Dialogs>
 
-export default DialogsContainer;
+
+export default compose(connect(mapStateToProps, mapDispatchToProps) ,WithAuthRedirect)(Dialogs);
