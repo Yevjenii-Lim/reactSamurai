@@ -22,7 +22,7 @@ class ProfileClass extends React.Component {
       userId = this.props.idAuth;
     }
     if (userId !== null) {
-      console.log('component dii mount')
+      // console.log('component dii mount')
       this.props.getProfileThunkCreator(userId);
       this.props.getStatusThunkCreator(userId);
     }

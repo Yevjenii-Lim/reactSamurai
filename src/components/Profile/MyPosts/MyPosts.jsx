@@ -1,37 +1,58 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
+import { TextArea } from "../../common/FromsControl";
+import {  maxLengthCreator, requairedField } from "../../utils/validators";
 // import { addPostActionCreator, newPostTextActionCreator } from "../../../redux/profile-reduce";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+
+
+const maxLength30 = maxLengthCreator(10)
+
+const PostForm = (props) => {
+  return (
+    <form action="" onSubmit={props.handleSubmit}>
+      <div>
+       <Field
+          // value={props.newPostText}
+          // onChange={changer}
+          // ref={newPost}
+          // className={s.add_post__input}
+          type="text"
+          component={TextArea}
+          placeholder="post"
+          name="post"
+          validate={[requairedField, maxLength30]}
+        ></Field>
+      </div>
+      <div>
+        <button className={s.add_post__button}>
+          Add
+        </button>
+        </div>
+    </form>
+  )
+}
+
+let PostReduxForm = reduxForm({form: "new Post"})(PostForm)
 
 function MyPosts(props) {
   // debugger
   let postElemtnts = props.posts.map((p, index) => (
     <Post message={p.message} key={index} like={p.like}></Post>
   ));
-  let newPost = React.createRef();
 
-  let changer = () => {
-    let text = newPost.current.value
-    props.newPostTextActionCreator(text)
-   
+
+
+  let onSubmit = (value) => {
+    props.addPostActionCreator(value.post)
+
   }
 
   return (
     <div className={s.add_post}>
-      <div>
-        <input
-          value={props.newPostText}
-          onChange={changer}
-          ref={newPost}
-          className={s.add_post__input}
-          type="text"
-        ></input>
-      </div>
-      <div>
-        <button onClick={ props.addPostActionCreator} className={s.add_post__button}>
-          Add
-        </button>
-      </div>
+
+      <PostReduxForm onSubmit={onSubmit}></PostReduxForm>
 
       <h3>My posts</h3>
       {postElemtnts}

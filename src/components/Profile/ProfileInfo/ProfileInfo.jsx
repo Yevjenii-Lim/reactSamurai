@@ -9,7 +9,7 @@ function ProfileInfo(props) {
     // console.log('asdsad')
     return <Preloader></Preloader>;
   }
-  console.log(props.status)
+  // console.log(props.status)
   // debugger
   return (
     <div className={s.content}>

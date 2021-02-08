@@ -62,8 +62,8 @@ const messagesReducer = (state = initialState, action) => {
     switch(action.type) {
         case SEND_MESSAGE: {
        
-          if(state.newMessageText.length > 1) {
-            let body = state.newMessageText;
+          if(action.newMessage.length > 1) {
+            let body = action.newMessage;
             // stateCopy.messagesData = [...state.messagesData]
          
             // for(let i = 0; i < state.messagesData.length; i++) {

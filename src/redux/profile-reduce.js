@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: 
             let newPost = {
                 id: 3,
-                message: state.newPostText,
+                message: action.post,
                 like: 0,
             };
             return {
@@ -62,7 +62,7 @@ const profileReducer = (state = initialState, action) => {
           }
         }
         case SET_STATUS: {
-          debugger
+          // debugger
           return {
             ...state,
             status: action.text
@@ -73,7 +73,7 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export let addPostActionCreator = () => ({ type: ADD_POST,})
+export let addPostActionCreator = (post) => ({ type: ADD_POST,post})
 
 export let newPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST, newText: text })
 
@@ -97,7 +97,7 @@ export const getStatusThunkCreator = (id) => {
   return dispatch => {
     profileAPI.getStatus(id)
     .then(response => {
-      debugger
+      // debugger
       dispatch(setStatus(response.data))
     })
   }
@@ -107,7 +107,7 @@ export const updateStatusThunkCreator = (text) => {
   return dispatch => {
     profileAPI.updateStatus(text)
     .then(response => {
-      debugger
+      // debugger
       if(response.data.resultCode === 0) {
         dispatch(setStatus(text))
       }
