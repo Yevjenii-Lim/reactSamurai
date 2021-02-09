@@ -1,7 +1,7 @@
 import Header from "./Header";
 import { connect } from "react-redux";
 import React from "react";
-import { setAuthUserData } from "../../redux/auth-reducer";
+import { logoutThunkCreator, setAuthUserData } from "../../redux/auth-reducer";
 import { setUserProfile } from "../../redux/profile-reduce";
 import { getAuthApi, getProfileApi } from "../../redux/api/api";
 import { setHeaderThunkCreator } from "../../redux/header-reducer";
@@ -24,10 +24,12 @@ let mapStateToProps = (state) => {
   };
 };
 
+
 let HeaderContainer = connect(mapStateToProps, {
   setAuthUserData,
   setUserProfile,
-  setHeaderThunkCreator
+  setHeaderThunkCreator,
+  logoutThunkCreator
 })(HeaderClass);
 
 export default HeaderContainer;

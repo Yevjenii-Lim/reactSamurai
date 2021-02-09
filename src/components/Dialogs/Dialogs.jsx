@@ -4,11 +4,12 @@ import DialogItem from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import { Redirect } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
-import { TextArea } from "../common/FromsControl";
+import { FormControlCreator, TextArea } from "../common/FromsControl";
 import { maxLengthCreator, requairedField } from "../utils/validators";
 // import { changeMessageActionCreator, sendMessageActionCreator } from "../../redux/messages-reduce";
 
 const maxLength = maxLengthCreator(50)
+let Input = FormControlCreator('input')
 
 const DialogFrom = (props) => {
   return (
@@ -17,7 +18,7 @@ const DialogFrom = (props) => {
         className={s.input}
         type="text"
         name="message"
-        component={TextArea}
+        component={Input}
         validate={[requairedField, maxLength]}
       ></Field>
       <button>Send it</button>

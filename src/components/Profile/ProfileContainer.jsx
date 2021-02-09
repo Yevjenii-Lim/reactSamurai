@@ -56,6 +56,7 @@ let mapStateToProps = (state) => {
     newPostText: state.profilePage.newPostText,
     posts: state.profilePage.postsData,
     idAuth: state.auth.id,
+    isAuth: state.auth.isAuth,
     status: state.profilePage.status,
   };
 };

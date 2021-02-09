@@ -24,7 +24,7 @@ export const getFollowApi = (id) => {
 }
 
 export const getAuthApi = () => {
-    return instance.get('auth/me').then(response => response.data)
+    return authApi.getAuthApi()
 }
 
 
@@ -47,4 +47,15 @@ export const getProfileApi = (id) => {
     return profileAPI.getProfileApi(id)
 }
 
+export const authApi = {
+    getAuthApi: () => {
+        return instance.get('auth/me').then(response => response.data)
+    },
+    login: (email, password, rememberMe = true, captcha=false) => {
+        return instance.post('auth/login', {email, password, rememberMe, captcha})
+    },
+    logout: () => {
+        return instance.delete('auth/login')
+    }
+}
 // export const get

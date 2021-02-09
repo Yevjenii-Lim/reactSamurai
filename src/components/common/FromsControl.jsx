@@ -15,6 +15,17 @@ let FormControl = ({input, meta, child, element, ...props}) => {
     )
 }
 
+export let FormControlCreator = Element => ({input, meta, ...props}) => {
+    let hasError = (!!meta.error && meta.touched) ? true : false
+    // console.log(Element)
+    return (
+        <div className={s.fromControl + " " +  hasError ? s.error : null }>
+           <Element {...input} {...props}></Element>
+            { hasError && <p className={s.error}>{meta.error}</p>}
+        </div>
+    )
+}
+
 export let TextArea = (props) => {
     // (meta.error && meta.touched) ? s.error : null
     // console.log(!!meta)

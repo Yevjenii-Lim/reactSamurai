@@ -23,7 +23,7 @@ function Header(props) {
     <header className={s.header}>
       <img alt="background" src={props.logo}></img>
       <div className={s.login}>
-        <NavLink to={'/login'}>{props.isAuth ? props.login : 'Login' }</NavLink>
+        <NavLink to={'/login'}>{props.isAuth ?<div> {props.login} <button onClick={props.logoutThunkCreator}>log uot</button> </div>: 'Login' }</NavLink>
       </div>
     </header>
   );

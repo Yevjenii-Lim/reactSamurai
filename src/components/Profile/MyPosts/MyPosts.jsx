@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { TextArea } from "../../common/FromsControl";
+import { FormControlCreator } from "../../common/FromsControl";
+// import { TextArea } from "../../common/FromsControl";
 import {  maxLengthCreator, requairedField } from "../../utils/validators";
 // import { addPostActionCreator, newPostTextActionCreator } from "../../../redux/profile-reduce";
 import s from "./MyPosts.module.css";
@@ -8,7 +9,7 @@ import Post from "./Post/Post";
 
 
 const maxLength30 = maxLengthCreator(10)
-
+let TextArea = FormControlCreator('textarea')
 const PostForm = (props) => {
   return (
     <form action="" onSubmit={props.handleSubmit}>
