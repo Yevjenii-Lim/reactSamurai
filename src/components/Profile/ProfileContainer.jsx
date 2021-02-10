@@ -18,11 +18,16 @@ import { compose } from "redux";
 class ProfileClass extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
+    
     if (!userId) {
       userId = this.props.idAuth;
+      // console.log(userId)
+      if(!userId) {
+        this.props.history.push('/login')
+      }
     }
     if (userId !== null) {
-      // console.log('component dii mount')
+     
       this.props.getProfileThunkCreator(userId);
       this.props.getStatusThunkCreator(userId);
     }
@@ -80,5 +85,5 @@ let ProfileContainer = connect(
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withRouter,
-  WithAuthRedirect
+  
 )(ProfileClass);

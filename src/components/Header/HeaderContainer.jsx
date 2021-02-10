@@ -7,9 +7,7 @@ import { getAuthApi, getProfileApi } from "../../redux/api/api";
 import { setHeaderThunkCreator } from "../../redux/header-reducer";
 
 class HeaderClass extends React.Component {
-  componentDidMount() {
-    this.props.setHeaderThunkCreator()
-  }
+
 
   render() {
     return <Header {...this.props}></Header>;

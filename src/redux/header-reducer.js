@@ -14,7 +14,7 @@ const header = (state = initialState, action) => {
 
 export const setHeaderThunkCreator = () => {
     return (dispatch) => {
-        getAuthApi().then((data) => {
+      return  getAuthApi().then((data) => {
             
             if (data.resultCode === 0) {
               let { id, email, login } = data.data;
@@ -24,6 +24,7 @@ export const setHeaderThunkCreator = () => {
               );
             }
           });
+        
     }
 }
 
