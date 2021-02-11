@@ -34,6 +34,7 @@ class ProfileClass extends React.Component {
   }
 
   render() {
+    // console.log('render')
     return (
       <article>
         <ProfileInfo
@@ -56,6 +57,7 @@ let AuthRedireactComponent = WithAuthRedirect(ProfileClass);
 // }
 
 let mapStateToProps = (state) => {
+  // console.log('map state to props')
   return {
     profile: state.profilePage.profileData,
     newPostText: state.profilePage.newPostText,
@@ -77,10 +79,6 @@ let mapDispatchToProps = {
 
 let WithUrlDataContainerComponent = withRouter(AuthRedireactComponent);
 
-let ProfileContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WithUrlDataContainerComponent);
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

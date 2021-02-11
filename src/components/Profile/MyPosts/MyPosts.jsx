@@ -15,10 +15,6 @@ const PostForm = (props) => {
     <form action="" onSubmit={props.handleSubmit}>
       <div>
        <Field
-          // value={props.newPostText}
-          // onChange={changer}
-          // ref={newPost}
-          // className={s.add_post__input}
           type="text"
           component={TextArea}
           placeholder="post"
