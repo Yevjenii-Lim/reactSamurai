@@ -16,7 +16,7 @@ import React from 'react';
 // import s from './user.module.css'
 import Preloader from "../common/Preloader";
 import { compose } from "redux";
-import { getCurrentPage, getTotalUsers, getUsers, getPageSize, getIsFetching, getFollowingProgress } from "../../redux/users-selectors";
+import { getCurrentPage, getTotalUsers, getUsers, getPageSize, getIsFetching, getFollowingProgress, getUsersSuperSelector } from "../../redux/users-selectors";
 
 
 
@@ -53,8 +53,9 @@ class UsersAPIComponent extends React.Component {
 
 
 let mapStateToProps = (state) => {
+  console.log('map state to props')
   return {
-    users: getUsers(state),
+    users: getUsersSuperSelector(state),
     pageSize: getPageSize(state),
     totalUsers: getTotalUsers(state),
     currentPage: getCurrentPage(state),

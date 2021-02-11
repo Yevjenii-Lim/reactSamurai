@@ -14,7 +14,7 @@ let initialState = {
         ],
         newPostText: "new Post",
         profileData: null,
-        status: 'new status'
+        status: ''
 
 }
 
@@ -105,6 +105,7 @@ export const getStatusThunkCreator = (id) => {
 
 export const updateStatusThunkCreator = (text) => {
   return dispatch => {
+    // console.log(text)
     profileAPI.updateStatus(text)
     .then(response => {
       // debugger

@@ -34,7 +34,7 @@ class ProfileClass extends React.Component {
   }
 
   render() {
-    // console.log('render')
+
     return (
       <article>
         <ProfileInfo

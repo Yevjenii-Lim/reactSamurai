@@ -3,8 +3,10 @@ import Preloader from "../../common/Preloader";
 import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../assets/images/avatar.png";
 import ProfileStatus from "../ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
 
 function ProfileInfo(props) {
+
   if (!props.profile) {
     // console.log('asdsad')
     return <Preloader></Preloader>;
@@ -28,11 +30,15 @@ function ProfileInfo(props) {
             <li>Age</li>
             <li>Age</li>
           </ul>
-          <ProfileStatus
+          <ProfileStatusWithHooks
+            status={props.status}
+            updateStatus={props.updateStatus}
+          ></ProfileStatusWithHooks>
+          {/* <ProfileStatus
             status={props.status}
             updateStatus={props.updateStatus}
             chengeStatus={props.changeStatus}
-          ></ProfileStatus>
+          ></ProfileStatus> */}
         </div>
       </div>
     </div>
