@@ -11,7 +11,7 @@ let activateEditMode = () => {
   setEditMode(true)
 }
 useEffect(() => {
-  console.log('useEffect')
+  // console.log('useEffect')
   setStatus(props.status)
 }, [props.status])
 

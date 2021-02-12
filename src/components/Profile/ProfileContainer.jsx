@@ -34,7 +34,7 @@ class ProfileClass extends React.Component {
   }
 
   render() {
-
+// console.log(this.props)
     return (
       <article>
         <ProfileInfo
@@ -43,7 +43,10 @@ class ProfileClass extends React.Component {
           status={this.props.status}
           updateStatus={this.props.updateStatusThunkCreator}
         ></ProfileInfo>
-        <MyPosts {...this.props}></MyPosts>
+        <MyPosts 
+        addPostActionCreator={this.props.addPostActionCreator}
+        posts={this.props.posts}
+        ></MyPosts>
       </article>
     );
   }
