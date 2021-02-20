@@ -13,6 +13,7 @@ const header = (state = initialState, action) => {
 
 
 export const setHeaderThunkCreator = () => {
+  console.log('dasd')
     return async (dispatch) => {
       let data = await getAuthApi();
       if(data.resultCode === 0) {
