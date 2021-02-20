@@ -13,17 +13,25 @@ const header = (state = initialState, action) => {
 
 
 export const setHeaderThunkCreator = () => {
-    return (dispatch) => {
-      return  getAuthApi().then((data) => {
+    return async (dispatch) => {
+      let data = await getAuthApi();
+      if(data.resultCode === 0) {
+        let { id, email, login } = data.data;
+        dispatch(setAuthUserData(id, email, login, true));
+        let userData = await getProfileApi(data.data.id)
+        dispatch(setUserProfile(userData))
+        return data
+      }
+      // return  getAuthApi().then((data) => {
             
-            if (data.resultCode === 0) {
-              let { id, email, login } = data.data;
-              dispatch(setAuthUserData(id, email, login, true));
-              getProfileApi(data.data.id).then((data) =>
-              dispatch(setUserProfile(data))
-              );
-            }
-          });
+      //       if (data.resultCode === 0) {
+      //         let { id, email, login } = data.data;
+      //         dispatch(setAuthUserData(id, email, login, true));
+      //         getProfileApi(data.data.id).then((data) =>
+      //         dispatch(setUserProfile(data))
+      //         );
+      //       }
+      //     });
         
     }
 }

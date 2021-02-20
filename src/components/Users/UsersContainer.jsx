@@ -53,7 +53,7 @@ class UsersAPIComponent extends React.Component {
 
 
 let mapStateToProps = (state) => {
-  console.log('map state to props')
+  // console.log('map state to props')
   return {
     users: getUsersSuperSelector(state),
     pageSize: getPageSize(state),

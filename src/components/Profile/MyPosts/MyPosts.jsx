@@ -74,7 +74,7 @@ let mapStateToProps = (state) => {
 
 let MyPosts = React.memo(props => {
   // debugger
-  console.log("render");
+  // console.log("render");
   window.props.push(props);
   let postElemtnts = props.posts.map((p, index) => (
     <Post message={p.message} key={index} like={p.like}></Post>

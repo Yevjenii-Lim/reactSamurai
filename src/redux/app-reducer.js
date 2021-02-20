@@ -28,9 +28,13 @@ const appReducer = (state = initialState, action) => {
 export let initializedSuccess = () => ({ type: INITIALIZED_SUCCESS});
 
 export let getAuthUserData = () => { 
-  return dispatch => {
-   let promise = dispatch(setHeaderThunkCreator());
-   promise.then(() => dispatch(initializedSuccess()))
+  return async dispatch => {
+   let promise = await dispatch(setHeaderThunkCreator());
+  // await promise
+
+  dispatch(initializedSuccess())
+
+  //  promise.then(() => dispatch(initializedSuccess()))
   }
 }
 

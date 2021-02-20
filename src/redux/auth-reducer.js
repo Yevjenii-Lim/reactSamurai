@@ -34,10 +34,10 @@ export let setAuthUserData = (id,email, login,isAuth ) => ({ type: SET_USER_DATA
 
 export let loginThunkCreator = (email, password, rememberMe) => { 
 
-  return dispatch => {
+  return async dispatch => {
 
-    authApi.login(email, password, rememberMe,)
-    .then(response => {
+    let response = await authApi.login(email, password, rememberMe,)
+
       if(response.data.resultCode === 0) {
         dispatch(setHeaderThunkCreator())
       }else {
@@ -46,18 +46,16 @@ export let loginThunkCreator = (email, password, rememberMe) => {
         let action = stopSubmit("login", {_error: message});
         dispatch(action)
       }
-    })
+  
   }
 }
 
 export let logoutThunkCreator = (email, password, rememberMe) => { 
-  return dispatch => {
-    authApi.logout()
-    .then(response => {
+  return async dispatch => {
+    let response = await authApi.logout()
       if(response.data.resultCode === 0) {
         dispatch(setAuthUserData(null,null,null, false))
       }
-    })
   }
 }
 
